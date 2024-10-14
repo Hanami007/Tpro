@@ -7,6 +7,7 @@ const AddBathroomPopup = ({ isOpen, onClose, onAdd }) => {
   const [rating, setRating] = useState("");
   const [image, handleImageUpload] = useState("");
   const [mapLink, setMapLink] = useState("");
+  const [isPaid, setIsPaid] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,6 +18,8 @@ const AddBathroomPopup = ({ isOpen, onClose, onAdd }) => {
       cleanliness,
       rating,
       image,
+      mapLink,
+      isPaid,
     };
     onAdd(newBathroom);
     onClose(); // ปิด Popup หลังจากเพิ่มรายการ
@@ -39,7 +42,7 @@ const AddBathroomPopup = ({ isOpen, onClose, onAdd }) => {
           />
           <input
             type="text"
-            placeholder="สถานที่"
+            placeholder="สถานที่ (เช่น ตึก อาคาร ...)"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             required
@@ -60,6 +63,29 @@ const AddBathroomPopup = ({ isOpen, onClose, onAdd }) => {
             required
             className="border p-2 rounded mb-2 w-full"
           />
+          <div className="mb-4">
+            <label className="block mb-1">ประเภทห้องน้ำ:</label>
+            <label className="inline-flex items-center">
+              <input
+                type="radio"
+                value={false}
+                checked={!isPaid}
+                onChange={() => setIsPaid(false)} // ห้องน้ำฟรี
+                className="mr-2"
+              />
+              ฟรี
+            </label>
+            <label className="inline-flex items-center ml-4">
+              <input
+                type="radio"
+                value={true}
+                checked={isPaid}
+                onChange={() => setIsPaid(true)} // ห้องน้ำเสียเงิน
+                className="mr-2"
+              />
+              เสียเงิน
+            </label>
+          </div>
 
           <div className="flex justify-between mt-4">
             <button
