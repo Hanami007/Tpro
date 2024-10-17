@@ -55,6 +55,20 @@ const AddBathroomPopup = ({ isOpen, onClose, onAdd }) => {
             required
             className="border p-2 rounded mb-2 w-full"
           />
+          {/* <input
+            type="text"
+            placeholder="ลิงก์รูปภาพ"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+            required
+            className="border p-2 rounded mb-2 w-full"
+          />
+          
+          {imageUrl && (
+            <div className="mb-2">
+              <img src={imageUrl} alt="Preview" className="w-full h-40 object-cover rounded" />
+            </div>
+          )} */}
           <input
             type="text"
             placeholder="ลิงก์แผนที่ (เช่น Google Maps URL)"
